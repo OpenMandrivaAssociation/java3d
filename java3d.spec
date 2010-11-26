@@ -23,6 +23,13 @@ URL:		https://java3d.dev.java.net
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 #-----------------------------------------------------------------------
+BuildRequires:  ant
+BuildRequires:	GL-devel
+BuildRequires:  java-rpmbuild
+BuildRequires:	jpackage-utils
+BuildRequires:  libjpeg-devel
+
+#-----------------------------------------------------------------------
 %description
 This is the parent project for all Java 3DTM-related sub-projects on java.net.
 These sub-projects include: j3d-core (the core 3D API), vecmath (the 3D vector
@@ -47,13 +54,6 @@ Group:		Development/Other
 
 %description javadoc
 Documentation files and headers for %{name}.
-
-#-----------------------------------------------------------------------
-BuildRequires:  ant
-BuildRequires:	GL-devel
-BuildRequires:  java-rpmbuild
-BuildRequires:	jpackage-utils
-BuildRequires:  libjpeg-devel
 
 #-----------------------------------------------------------------------
 %prep
