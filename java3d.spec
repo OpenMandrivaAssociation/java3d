@@ -24,10 +24,13 @@ BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 #-----------------------------------------------------------------------
 BuildRequires:  ant
+BuildRequires:	ant-apache-bcel
+BuildRequires:	crimson
 BuildRequires:	GL-devel
 BuildRequires:  java-rpmbuild
 BuildRequires:	jpackage-utils
 BuildRequires:  libjpeg-devel
+BuildRequires:	xml-commons-jaxp-1.3-apis
 
 #-----------------------------------------------------------------------
 %description
