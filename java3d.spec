@@ -25,6 +25,7 @@ BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 #-----------------------------------------------------------------------
 BuildRequires:  ant
 BuildRequires:	ant-apache-bcel
+BuildRequires:	ant-nodeps
 BuildRequires:	crimson
 BuildRequires:	GL-devel
 BuildRequires:  java-rpmbuild
