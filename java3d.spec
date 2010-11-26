@@ -52,6 +52,7 @@ Documentation files and headers for %{name}.
 BuildRequires:  ant
 BuildRequires:	GL-devel
 BuildRequires:  java-rpmbuild
+BuildRequires:	jpackage-utils
 BuildRequires:  libjpeg-devel
 
 #-----------------------------------------------------------------------
