@@ -60,6 +60,8 @@ BuildRequires:  libjpeg-devel
 %setup -q
 
 #-----------------------------------------------------------------------
+%define ant	JAVA_HOME=%{java_home} ant
+
 %build
 pushd vecmath
     %ant jar
