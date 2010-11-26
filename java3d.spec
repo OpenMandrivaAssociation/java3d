@@ -2,6 +2,7 @@ Name:		java3d
 Group:		Graphics
 Summary:	Master project for Java 3D projects
 Version:	1.5.2
+# And some restrictions like Sun and others IP/patents, US embargos, etc
 License:	BSD like and GPLv2+
 Release:	%mkrel 1
 
@@ -72,6 +73,7 @@ popd
 
 #-----------------------------------------------------------------------
 %install
+mkdir -p %{buildroot}%{_libdir}
 mkdir -p %{buildroot}%{_javadir}
 mkdir -p %{buildroot}%{_javadocdir}/{vecmath,j3d-core}
 mkdir -p %{buildroot}%{_datadir}/java3d/{vecmath,j3d}
@@ -85,8 +87,7 @@ pushd vecmath
 popd
 
 pushd j3d-core
-    # FIXME dual arch/shared install?
-    install -m644 build/linux-*/opt/lib/*/libj3dcore-ogl.so %{buildroot}%{_javadir}
+    install -m644 build/linux-*/opt/lib/*/libj3dcore-ogl.so %{buildroot}%{_libdir}
     install -m644 build/linux-*/opt/lib/ext/{j3dcore,j3dutils}.jar %{buildroot}%{_javadir}
     cp -fa build/linux-*/javadocs/* %{buildroot}%{_javadocdir}/j3d-core
     cp -far build/linux-*/opt/gen %{buildroot}%{_datadir}/java3d/j3d
@@ -97,6 +98,7 @@ popd
 %files
 %defattr(-,root,root)
 %{_javadir}/*
+%{_libdir}/*.so
 
 %files	devel
 %defattr(-,root,root)
