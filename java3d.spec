@@ -4,7 +4,7 @@ Summary:	Master project for Java 3D projects
 Version:	1.5.2
 # And some restrictions like Sun and others IP/patents, US embargos, etc
 License:	BSD like and GPLv2+
-Release:	%mkrel 1
+Release:	2
 
 # register an user at https://www.dev.java.net
 # mkdir java3d-1.5.2
@@ -20,18 +20,19 @@ Release:	%mkrel 1
 Source0:	java3d-1.5.2.tar.bz2
 # http://wiki.java.net/bin/view/Javadesktop/Java3DFAQ
 URL:		https://java3d.dev.java.net
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
+Patch0:		06_java-compat.patch
 
 #-----------------------------------------------------------------------
 BuildRequires:  ant
 BuildRequires:	ant-apache-bcel
 BuildRequires:	ant-nodeps
 BuildRequires:	crimson
-BuildRequires:	GL-devel
+BuildRequires:	pkgconfig(gl)
 BuildRequires:  java-rpmbuild
 BuildRequires:	jpackage-utils
-BuildRequires:  libjpeg-devel
+BuildRequires:  jpeg-devel
 BuildRequires:	xml-commons-jaxp-1.3-apis
+BuildRequires:	pkgconfig(xt)
 
 #-----------------------------------------------------------------------
 %description
@@ -62,6 +63,7 @@ Documentation files and headers for %{name}.
 #-----------------------------------------------------------------------
 %prep
 %setup -q
+%apply_patches
 
 #-----------------------------------------------------------------------
 %define ant	JAVA_HOME=%{java_home} ant
@@ -94,7 +96,7 @@ pushd vecmath
 popd
 
 pushd j3d-core
-    install -m644 build/linux-*/opt/lib/*/libj3dcore-ogl.so %{buildroot}%{_libdir}
+    install -m755 build/linux-*/opt/lib/*/libj3dcore-ogl.so %{buildroot}%{_libdir}
     install -m644 build/linux-*/opt/lib/ext/{j3dcore,j3dutils}.jar %{buildroot}%{_javadir}
     cp -fa build/linux-*/javadocs/* %{buildroot}%{_javadocdir}/j3d-core
     cp -far build/linux-*/opt/gen %{buildroot}%{_datadir}/java3d/j3d
@@ -103,17 +105,14 @@ popd
 
 #-----------------------------------------------------------------------
 %files
-%defattr(-,root,root)
 %{_javadir}/*
 %{_libdir}/*.so
 
 %files	devel
-%defattr(-,root,root)
 %dir %{_datadir}/java3d
 %{_datadir}/java3d/*
 
 %files	javadoc
-%defattr(-,root,root)
 %dir %{_javadocdir}/vecmath
 %{_javadocdir}/vecmath/*
 %dir %{_javadocdir}/j3d-core
