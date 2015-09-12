@@ -4,7 +4,7 @@ Summary:	Master project for Java 3D projects
 Version:	1.5.2
 # And some restrictions like Sun and others IP/patents, US embargos, etc
 License:	BSD like and GPLv2+
-Release:	3
+Release:	4
 
 # register an user at https://www.dev.java.net
 # mkdir java3d-1.5.2
