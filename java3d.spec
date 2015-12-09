@@ -1,3 +1,5 @@
+%define debug_package %{nil}
+
 Name:		java3d
 Group:		Graphics
 Summary:	Master project for Java 3D projects
@@ -21,12 +23,10 @@ Source0:	java3d-1.5.2.tar.bz2
 # http://wiki.java.net/bin/view/Javadesktop/Java3DFAQ
 URL:		https://java3d.dev.java.net
 Patch0:		06_java-compat.patch
-
+Patch1:		typedef.patch
 #-----------------------------------------------------------------------
 BuildRequires:  ant
 BuildRequires:	ant-apache-bcel
-BuildRequires:	ant-nodeps
-BuildRequires:	crimson
 BuildRequires:	pkgconfig(gl)
 BuildRequires:  java-rpmbuild
 BuildRequires:	jpackage-utils
