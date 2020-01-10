@@ -63,7 +63,7 @@ Documentation files and headers for %{name}.
 #-----------------------------------------------------------------------
 %prep
 %setup -q
-%apply_patches
+%autopatch -p1
 
 #-----------------------------------------------------------------------
 %define ant	JAVA_HOME=%{java_home} ant
